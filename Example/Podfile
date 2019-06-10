@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'LEBottomSheetView_Example' do
+  pod 'LEBottomSheetView', :path => '../'
+
+  target 'LEBottomSheetView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
