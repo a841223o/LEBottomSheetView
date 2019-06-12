@@ -1,0 +1,6 @@
+framework module LEBottomSheetView {
+  umbrella header "LEBottomSheetView-umbrella.h"
+
+  export *
+  module * { export * }
+}

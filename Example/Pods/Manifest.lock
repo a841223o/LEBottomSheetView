@@ -1,0 +1,16 @@
+PODS:
+  - LEBottomSheetView (0.1.0)
+
+DEPENDENCIES:
+  - LEBottomSheetView (from `../`)
+
+EXTERNAL SOURCES:
+  LEBottomSheetView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LEBottomSheetView: 6fb9241c940cf72de82cd70569ebf5049d63f745
+
+PODFILE CHECKSUM: 2ac5243e1d739379251036a980e8eae103d37190
+
+COCOAPODS: 1.6.1

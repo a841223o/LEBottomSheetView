@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+import LEBottomSheetView
 class ViewController: UIViewController {
-
+    var bottomView : BottomSheetView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        bottomView = BottomSheetView.init(frame: self.view.frame, superview: self.view)
+        bottomView.setBottomSheetViewBackgroundColor(color: UIColor.lightGray)
+        bottomView.station = .center
+        
     }
 
     override func didReceiveMemoryWarning() {

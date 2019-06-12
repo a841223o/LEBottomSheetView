@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		0E984EB578A74C6F8E079390 /* Pods-LEBottomSheetView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEBottomSheetView_Example.release.xcconfig"; path = "Target Support Files/Pods-LEBottomSheetView_Example/Pods-LEBottomSheetView_Example.release.xcconfig"; sourceTree = "<group>"; };
-		3509E29BDCAA1F83CA0044F3 /* LEBottomSheetView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = LEBottomSheetView.podspec; path = ../LEBottomSheetView.podspec; sourceTree = "<group>"; };
+		3509E29BDCAA1F83CA0044F3 /* LEBottomSheetView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LEBottomSheetView.podspec; path = ../LEBottomSheetView.podspec; sourceTree = "<group>"; };
 		3FB2E232F5CF92B7F9E99F86 /* Pods-LEBottomSheetView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEBottomSheetView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-LEBottomSheetView_Tests/Pods-LEBottomSheetView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		46624DC22D52E98B84BCEA13 /* Pods-LEBottomSheetView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEBottomSheetView_Example.debug.xcconfig"; path = "Target Support Files/Pods-LEBottomSheetView_Example/Pods-LEBottomSheetView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		540D70718ED2B91482EC5439 /* Pods_LEBottomSheetView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEBottomSheetView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,9 +43,9 @@
 		607FACE51AFB9204008FA782 /* LEBottomSheetView_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEBottomSheetView_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		626E63F0A2979FB1A4E3B15E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		626E63F0A2979FB1A4E3B15E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8909A54781C2E8EC828E9C87 /* Pods_LEBottomSheetView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEBottomSheetView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F15A1C0465CF856A0C389F3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		9F15A1C0465CF856A0C389F3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B70E7B1F8CB456555CF944BE /* Pods-LEBottomSheetView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEBottomSheetView_Tests.release.xcconfig"; path = "Target Support Files/Pods-LEBottomSheetView_Tests/Pods-LEBottomSheetView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,6 @@
 				3FB2E232F5CF92B7F9E99F86 /* Pods-LEBottomSheetView_Tests.debug.xcconfig */,
 				B70E7B1F8CB456555CF944BE /* Pods-LEBottomSheetView_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,16 +207,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = 669ADWH3FP;
+						LastSwiftMigration = 1010;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -482,13 +482,13 @@
 			baseConfigurationReference = 46624DC22D52E98B84BCEA13 /* Pods-LEBottomSheetView_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 669ADWH3FP;
 				INFOPLIST_FILE = LEBottomSheetView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -497,13 +497,13 @@
 			baseConfigurationReference = 0E984EB578A74C6F8E079390 /* Pods-LEBottomSheetView_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 669ADWH3FP;
 				INFOPLIST_FILE = LEBottomSheetView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -523,8 +523,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LEBottomSheetView_Example.app/LEBottomSheetView_Example";
 			};
 			name = Debug;
@@ -541,8 +540,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LEBottomSheetView_Example.app/LEBottomSheetView_Example";
 			};
 			name = Release;

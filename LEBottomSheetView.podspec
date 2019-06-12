@@ -24,19 +24,20 @@ TODO: Add long description of the pod here.
   s.homepage         = 'https://github.com/a841223o/LEBottomSheetView'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'a841223o' => 'leo@fox-tech.co' }
+  s.author           = { 'a841223o' => 'a841223o@gmail.com' }
   s.source           = { :git => 'https://github.com/a841223o/LEBottomSheetView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'LEBottomSheetView/Classes/**/*'
+  s.source_files = 'LEBottomSheetView/Classes/*.swift'
   
-  # s.resource_bundles = {
-  #   'LEBottomSheetView' => ['LEBottomSheetView/Assets/*.png']
-  # }
+  s.resource_bundles ={
+    'LEBottomSheetView' => ['LEBottomSheetView/Assets/*.xcassets']
+  }
+   
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+   s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

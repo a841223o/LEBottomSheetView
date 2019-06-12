@@ -1,0 +1,28 @@
+{
+  "name": "LEBottomSheetView",
+  "version": "0.1.0",
+  "summary": "A short description of LEBottomSheetView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/a841223o/LEBottomSheetView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "a841223o": "a841223o@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/a841223o/LEBottomSheetView.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LEBottomSheetView/Classes/*.swift",
+  "resource_bundles": {
+    "LEBottomSheetView": [
+      "LEBottomSheetView/Assets/*.xcassets"
+    ]
+  },
+  "frameworks": "UIKit"
+}
