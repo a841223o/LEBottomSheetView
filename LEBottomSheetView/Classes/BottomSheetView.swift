@@ -53,7 +53,14 @@ public class BottomSheetView : UIView {
             if  self.childView.subviews.count > 0 {
                 self.childView.subviews[0].frame.size = self.childView.frame.size
             }
-            
+            switch self.barLineStation {
+            case .inToolBar:
+                self.barLineStation = .inToolBar
+            case .outToolBar:
+                self.barLineStation = .outToolBar
+            case .inVisable:
+                break
+            }
         }
     }
     
@@ -83,26 +90,20 @@ public class BottomSheetView : UIView {
         setupToolBar()
         setupChildView()
         setupBarLine()
-        
-        
+        self.setTopCenterBottom(topY: 50 ,
+                                centerY:  self.frame.height/2,
+                                bottomY: superview.frame.height-70)
         self.roundCorner(radious: topCornerRadius, rectCorners: [.topLeft,.topRight])
-        self.bottomY = superview.frame.height - self.toolBar.frame.height
-        self.centerY = bottomY - self.frame.height/2
-        self.topY = bottomY - self.childView.frame.height
+        self.setTootBarHeihgt(height: 60)
         self.inVisableY = superview.frame.height
+   
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func setupToolBar(){
         toolBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight))
         toolBar.backgroundColor = UIColor.white
         let panGesture =  UIPanGestureRecognizer.init(target: self, action: #selector(handel(recognizer:)))
         toolBar.addGestureRecognizer(panGesture)
         self.addSubview(toolBar)
-        
     }
     
     func setupChildView(){
@@ -121,8 +122,44 @@ public class BottomSheetView : UIView {
         barLine.center = CGPoint.init(x: self.width*0.5, y: self.toolBar.y + 15)
         barLine.contentMode = .scaleAspectFill
         self.addSubview(barLine)
-        
     }
+    
+    func updateUI(){
+        toolBar.frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight)
+        childView.frame = CGRect.init(x: 0, y: toolBar.frame.height,width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height)
+        barLine.frame = CGRect.init(x: 0, y: 0, width: 60 , height: 30)
+        switch self.station {
+        case .bottom:
+            self.station = .bottom
+        case .top:
+            self.station = .top
+        case .center:
+            self.station = .center
+        case .inVisable:
+            self.station = .inVisable
+        }
+    }
+    
+    public func setTootBarHeihgt(height : CGFloat){
+        self.toolBarHeight  =  height
+        updateUI()
+//        self.bottomY = self.superview!.frame.height - self.toolBar.frame.height
+//        self.centerY = bottomY - self.frame.height/2
+//        self.topY = bottomY - self.childView.frame.height
+    }
+    
+    //MARK: fix bottomY < toolBar  is error
+    public func setTopCenterBottom(topY : CGFloat , centerY : CGFloat , bottomY : CGFloat){
+        self.bottomY = bottomY
+        self.centerY = centerY
+        self.topY = topY
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+  
     public func setBarLineColor(color :UIColor){
         image =  image.tint(color, blendMode: .destinationIn)
     }
@@ -159,6 +196,7 @@ public class BottomSheetView : UIView {
             self.barLine.image = self.barLine.image?.tint(color, blendMode: .destinationIn)
         }
     }
+    
     public func setChildView(view : UIView){
         self.childView.addSubview(view)
     }
@@ -174,18 +212,23 @@ public class BottomSheetView : UIView {
     
         }else{
             self.frame.origin = CGPoint.init(x: 0, y: self.frame.origin.y + translation.y)
-            self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
-            self.childView.subviews[0].frame.size = self.childView.frame.size
+     
             //            setChildeViewBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
             //            setToolBarBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
         }
-        if barLineStation == .outToolBar{
-            self.barLineStation =  .outToolBar
+        self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
+        self.childView.subviews[0].frame.size = self.childView.frame.size
+        
+        switch self.barLineStation {
+        case .inToolBar:
+            self.barLineStation = .inToolBar
+        case .outToolBar:
+            self.barLineStation = .outToolBar
+        case .inVisable:
+            break
         }
         
         recognizer.setTranslation(CGPoint.zero, in: self.superview)
-        
-        
         
         guard isMagnetic() else{
             return
@@ -221,9 +264,7 @@ public class BottomSheetView : UIView {
                     } )
                 }
             }
-            if barLineStation == .outToolBar{
-                self.barLineStation =  .outToolBar
-            }
+            
         }
         
         

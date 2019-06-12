@@ -48,6 +48,7 @@ extension UIView {
     
 }
 extension UIImage {
+    
     public func tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
         let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
