@@ -49,6 +49,8 @@ public class BottomSheetView : UIView {
         }
     }
     
+    
+    
     public var barLineStation : BarLineStation = .inToolBar {
         didSet{
             switch barLineStation {
@@ -88,26 +90,29 @@ public class BottomSheetView : UIView {
     func setupToolBar(){
         toolBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight))
         toolBar.backgroundColor = UIColor.white
-        self.addSubview(toolBar)
-        let panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(handel(recognizer:)))
+        let panGesture =  UIPanGestureRecognizer.init(target: self, action: #selector(handel(recognizer:)))
         toolBar.addGestureRecognizer(panGesture)
+        self.addSubview(toolBar)
+        
     }
     
     func setupChildView(){
         childView = UIView.init(frame: CGRect.init(x: 0, y: toolBar.frame.height, width: self.frame.width, height: self.frame.height-toolBar.frame.height))
         childView.backgroundColor  =  UIColor.white
         self.addSubview(childView)
+        let lineGesture =  UIPanGestureRecognizer.init(target: self, action: #selector(handel(recognizer:)))
+        childView.addGestureRecognizer(lineGesture)
     }
     
     func setupBarLine(){
         image = UIImage.bundledImage(named: "barLine")
-        
+        image = image.tint(.gray, blendMode: .destinationIn)
         barLine = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 60 , height: 30))
         barLine.image = image
-        barLine.tintColor = UIColor.white
         barLine.center = CGPoint.init(x: self.width*0.5, y: self.toolBar.y + 15)
         barLine.contentMode = .scaleAspectFill
         self.addSubview(barLine)
+        
     }
     public func setBarLineColor(color :UIColor){
         image =  image.tint(color, blendMode: .destinationIn)
@@ -123,6 +128,27 @@ public class BottomSheetView : UIView {
     public func setBottomSheetViewBackgroundColor(color : UIColor){
         self.toolBar.backgroundColor = color
         self.childView.backgroundColor = color
+    }
+    
+    public func setBarLineImage(color : UIColor? = nil , size : CGSize? = nil , image: UIImage? = nil ){
+       
+        if let size = size {
+            self.barLine.frame.size =  size
+            switch self.barLineStation {
+            case .inToolBar:
+                self.barLineStation = .inToolBar
+            case .outToolBar:
+                self.barLineStation = .outToolBar
+            case .inVisable:
+                break
+            }
+        }
+        if let image = image {
+            self.barLine.image = image
+        }
+        if let color = color {
+            self.barLine.image = self.barLine.image?.tint(color, blendMode: .destinationIn)
+        }
     }
     
     @objc func handel(recognizer:UIPanGestureRecognizer){

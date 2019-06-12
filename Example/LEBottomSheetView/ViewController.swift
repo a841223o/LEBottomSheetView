@@ -15,7 +15,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         bottomView = BottomSheetView.init(frame: self.view.frame, superview: self.view)
         bottomView.setBottomSheetViewBackgroundColor(color: UIColor.lightGray)
+        
         bottomView.station = .center
+        bottomView.barLineStation = .outToolBar
+        bottomView.setBarLineImage(size: CGSize( width: 30 , height: 30),image: UIImage.init(named: "line"))
+        
         
     }
 
