@@ -39,13 +39,21 @@ public class BottomSheetView : UIView {
             switch station {
             case .top:
                 self.frame.origin = CGPoint.init(x: 0, y: topY )
+                
             case .center:
                 self.frame.origin = CGPoint.init(x: 0, y: centerY )
+                
             case .bottom:
                 self.frame.origin = CGPoint.init(x: 0, y: bottomY )
+                
             case .inVisable:
                 self.frame.origin = CGPoint.init(x: 0, y: inVisableY)
             }
+            self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
+            if  self.childView.subviews.count > 0 {
+                self.childView.subviews[0].frame.size = self.childView.frame.size
+            }
+            
         }
     }
     
@@ -76,6 +84,7 @@ public class BottomSheetView : UIView {
         setupChildView()
         setupBarLine()
         
+        
         self.roundCorner(radious: topCornerRadius, rectCorners: [.topLeft,.topRight])
         self.bottomY = superview.frame.height - self.toolBar.frame.height
         self.centerY = bottomY - self.frame.height/2
@@ -97,7 +106,7 @@ public class BottomSheetView : UIView {
     }
     
     func setupChildView(){
-        childView = UIView.init(frame: CGRect.init(x: 0, y: toolBar.frame.height, width: self.frame.width, height: self.frame.height-toolBar.frame.height))
+        childView = UIView.init(frame: CGRect.init(x: 0, y: toolBar.frame.height,width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height))
         childView.backgroundColor  =  UIColor.white
         self.addSubview(childView)
         let lineGesture =  UIPanGestureRecognizer.init(target: self, action: #selector(handel(recognizer:)))
@@ -150,6 +159,9 @@ public class BottomSheetView : UIView {
             self.barLine.image = self.barLine.image?.tint(color, blendMode: .destinationIn)
         }
     }
+    public func setChildView(view : UIView){
+        self.childView.addSubview(view)
+    }
     
     @objc func handel(recognizer:UIPanGestureRecognizer){
         
@@ -159,10 +171,11 @@ public class BottomSheetView : UIView {
             
         }else if self.frame.origin.y + translation.y >= bottomY {
             self.frame.origin = CGPoint.init(x: 0, y: bottomY)
-            
+    
         }else{
             self.frame.origin = CGPoint.init(x: 0, y: self.frame.origin.y + translation.y)
-            
+            self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
+            self.childView.subviews[0].frame.size = self.childView.frame.size
             //            setChildeViewBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
             //            setToolBarBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
         }
@@ -171,6 +184,12 @@ public class BottomSheetView : UIView {
         }
         
         recognizer.setTranslation(CGPoint.zero, in: self.superview)
+        
+        
+        
+        guard isMagnetic() else{
+            return
+        }
         
         if recognizer.state == UIGestureRecognizer.State.ended {
             let height =  abs(self.frame.origin.y - self.topY)
@@ -209,5 +228,7 @@ public class BottomSheetView : UIView {
         
         
     }
-    
+    func isMagnetic() -> Bool {
+        return true
+    }
 }

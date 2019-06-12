@@ -15,6 +15,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		83CE0117DFC1FFD2EAF675DE /* Pods_LEBottomSheetView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8909A54781C2E8EC828E9C87 /* Pods_LEBottomSheetView_Example.framework */; };
 		9E9490AE2FCE4151A443DC19 /* Pods_LEBottomSheetView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540D70718ED2B91482EC5439 /* Pods_LEBottomSheetView_Tests.framework */; };
+		B38698B422B0B2D600F99CA0 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38698B322B0B2D600F99CA0 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		626E63F0A2979FB1A4E3B15E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		8909A54781C2E8EC828E9C87 /* Pods_LEBottomSheetView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEBottomSheetView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F15A1C0465CF856A0C389F3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B38698B322B0B2D600F99CA0 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		B70E7B1F8CB456555CF944BE /* Pods-LEBottomSheetView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LEBottomSheetView_Tests.release.xcconfig"; path = "Target Support Files/Pods-LEBottomSheetView_Tests/Pods-LEBottomSheetView_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 		607FACD21AFB9204008FA782 /* Example for LEBottomSheetView */ = {
 			isa = PBXGroup;
 			children = (
+				B38698B322B0B2D600F99CA0 /* TableViewController.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				B38698B422B0B2D600F99CA0 /* TableViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
