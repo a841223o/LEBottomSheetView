@@ -17,6 +17,7 @@
 		8D81859B47C2586152706334C74DAC0B /* Pods-LEBottomSheetView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6000D32E4BDC4F48DF1A5318EDFBFA77 /* Pods-LEBottomSheetView_Tests-dummy.m */; };
 		9106413368E917A5FD4991E538862EC0 /* Pods-LEBottomSheetView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 130D99826FFDD418068846E764B7C018 /* Pods-LEBottomSheetView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9813060946FFEC4B0ED7823CF09AFF81 /* Pods-LEBottomSheetView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7008FE80EA61F4C2B7D6D3D5840BAC4C /* Pods-LEBottomSheetView_Example-dummy.m */; };
+		B38698B622B1FEC200F99CA0 /* BottomSheetView+BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38698B522B1FEC200F99CA0 /* BottomSheetView+BackgroundView.swift */; };
 		B6D0952CA65F39475EF766901A33492C /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032B788EF7EC112749BDAF0FD087605 /* BottomSheetView.swift */; };
 		D542E9DF53B53106EFC48894F98061F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */; };
 		D6693F10AC4834241B967E3A53AB9CD7 /* LEBottomSheetView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C301F6CEEB839151663C17D631F5D71 /* LEBottomSheetView.bundle */; };
@@ -53,31 +54,32 @@
 		130D99826FFDD418068846E764B7C018 /* Pods-LEBottomSheetView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LEBottomSheetView_Example-umbrella.h"; sourceTree = "<group>"; };
 		1B1166D9E82038E1D395180E9252B1AA /* LEBottomSheetView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LEBottomSheetView.xcconfig; sourceTree = "<group>"; };
 		1FEF88E7A53589A87316B1FC0C7902FC /* LEBottomSheetView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LEBottomSheetView-dummy.m"; sourceTree = "<group>"; };
-		2239054CE655311F23E2934ACD097493 /* Pods_LEBottomSheetView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LEBottomSheetView_Example.framework; path = "Pods-LEBottomSheetView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2239054CE655311F23E2934ACD097493 /* Pods_LEBottomSheetView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEBottomSheetView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3234A702004987C35F8D83725117A06C /* Pods-LEBottomSheetView_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LEBottomSheetView_Tests-umbrella.h"; sourceTree = "<group>"; };
 		3A1208FF1E564C1DEE7B8E675FAE9ECD /* Pods-LEBottomSheetView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LEBottomSheetView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3A6FC5782803F267F97637BB49251100 /* ResourceBundle-LEBottomSheetView-LEBottomSheetView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-LEBottomSheetView-LEBottomSheetView-Info.plist"; sourceTree = "<group>"; };
 		40CB39E715FBCDAA142E6513E126200A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		41C0A9602E9CB69B9AF668E930121381 /* Pods-LEBottomSheetView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LEBottomSheetView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		438E4C1B8A028CFDC4C0F42375491285 /* Pods_LEBottomSheetView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LEBottomSheetView_Tests.framework; path = "Pods-LEBottomSheetView_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C301F6CEEB839151663C17D631F5D71 /* LEBottomSheetView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = LEBottomSheetView.bundle; path = "LEBottomSheetView-LEBottomSheetView.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		438E4C1B8A028CFDC4C0F42375491285 /* Pods_LEBottomSheetView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LEBottomSheetView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C301F6CEEB839151663C17D631F5D71 /* LEBottomSheetView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEBottomSheetView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6000D32E4BDC4F48DF1A5318EDFBFA77 /* Pods-LEBottomSheetView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LEBottomSheetView_Tests-dummy.m"; sourceTree = "<group>"; };
 		6946F155A5A1A7AEFC22BB42E776C30C /* LEBottomSheetView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LEBottomSheetView-umbrella.h"; sourceTree = "<group>"; };
 		7008FE80EA61F4C2B7D6D3D5840BAC4C /* Pods-LEBottomSheetView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LEBottomSheetView_Example-dummy.m"; sourceTree = "<group>"; };
 		72D0FDEE9DC561A25FCAF567EEC708F6 /* LEBottomSheetView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LEBottomSheetView.modulemap; sourceTree = "<group>"; };
 		7489CA1250C4167F8218CEB2D48CD36F /* pic.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = pic.xcassets; path = LEBottomSheetView/Assets/pic.xcassets; sourceTree = "<group>"; };
 		749024CE844D93BA75586C5CA469B540 /* Pods-LEBottomSheetView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LEBottomSheetView_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		8BF55B3533745765F6A1BC9A8FB8C3D0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		8C92AA105D50AAD31271CDE5E7B0CBCE /* LEBottomSheetView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LEBottomSheetView.framework; path = LEBottomSheetView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BF55B3533745765F6A1BC9A8FB8C3D0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8C92AA105D50AAD31271CDE5E7B0CBCE /* LEBottomSheetView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LEBottomSheetView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FA3EEE654AD60AAF2C516E7D0FB4B1 /* Pods-LEBottomSheetView_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LEBottomSheetView_Example-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A032B788EF7EC112749BDAF0FD087605 /* BottomSheetView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BottomSheetView.swift; path = LEBottomSheetView/Classes/BottomSheetView.swift; sourceTree = "<group>"; };
 		A6C1B48CA243B0692583621294DF0BA4 /* Pods-LEBottomSheetView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LEBottomSheetView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A73C5BD63AA31915ACC05B4D56113512 /* LEBottomSheetView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = LEBottomSheetView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A73C5BD63AA31915ACC05B4D56113512 /* LEBottomSheetView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = LEBottomSheetView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A79197EC9ABE413E18C6F42D92A61F13 /* Pods-LEBottomSheetView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LEBottomSheetView_Tests.modulemap"; sourceTree = "<group>"; };
 		B1C0D35DFE3582F784B1ECA73D15CBCF /* Pods-LEBottomSheetView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LEBottomSheetView_Example.modulemap"; sourceTree = "<group>"; };
-		B1D9D827B14FDEC24ED7DF32790A609D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B1D9D827B14FDEC24ED7DF32790A609D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B25D969294F4BC5922B1A1E74C9ABEBF /* Pods-LEBottomSheetView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LEBottomSheetView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		B38698B522B1FEC200F99CA0 /* BottomSheetView+BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "BottomSheetView+BackgroundView.swift"; path = "LEBottomSheetView/Classes/BottomSheetView+BackgroundView.swift"; sourceTree = "<group>"; };
 		BBBC37016A27372C0ABDE99F1B4356AE /* Pods-LEBottomSheetView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LEBottomSheetView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		BF11D34DACC4FFADAE3A3DB16D761A0B /* LEBottomSheetView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LEBottomSheetView-prefix.pch"; sourceTree = "<group>"; };
 		C1411D2204C2FD780945D80EE08EEF3B /* LEExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LEExtension.swift; path = LEBottomSheetView/Classes/LEExtension.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				A032B788EF7EC112749BDAF0FD087605 /* BottomSheetView.swift */,
 				C1411D2204C2FD780945D80EE08EEF3B /* LEExtension.swift */,
+				B38698B522B1FEC200F99CA0 /* BottomSheetView+BackgroundView.swift */,
 				244A93C712FFDC405712F3B4E08A8D45 /* Pod */,
 				15B32CC58F95915DB78E386875CB098D /* Resources */,
 				01A0BE7CEEBBBE855DEE4E179F8B67CA /* Support Files */,
@@ -439,6 +442,7 @@
 			files = (
 				B6D0952CA65F39475EF766901A33492C /* BottomSheetView.swift in Sources */,
 				8AC69903FE3B649B8013682D68DDC231 /* LEBottomSheetView-dummy.m in Sources */,
+				B38698B622B1FEC200F99CA0 /* BottomSheetView+BackgroundView.swift in Sources */,
 				800E729F18B15E9802E26C3FF11FB3BF /* LEExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,8 +832,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};

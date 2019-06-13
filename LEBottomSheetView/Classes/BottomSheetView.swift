@@ -20,10 +20,16 @@ public enum BarLineStation{
     case outToolBar
     case inVisable
 }
+public enum HorizontalStation{
+    case left
+    case center
+    case right
+}
+
 public class BottomSheetView : UIView {
     
-    var toolBar : UIView!
-    var toolBarHeight : CGFloat = 30
+    internal var toolBar : UIView!
+    var toolBarHeight : CGFloat = 45
     var childView : UIView!
     var barLine : UIImageView!
     var image : UIImage!
@@ -31,28 +37,48 @@ public class BottomSheetView : UIView {
     var topY : CGFloat = 0
     var bottomY : CGFloat = 0
     var centerY : CGFloat = 0
-    var inVisableY : CGFloat =  0
+    var inVisableY : CGFloat  {
+        get{
+           return  self.superview!.frame.height
+        }
+    }
     var topCornerRadius : Double = 20
+    var sheetX : CGFloat = 0
+    var barLineW : CGFloat = 60
+    var barLineH : CGFloat = 60
+    var animationDuration : TimeInterval = 0.3
+    var tapBarToStation : SheetStation = .center
     
-    public var station : SheetStation = .center {
+    public var horizontalStation : HorizontalStation = .left {
+        didSet{
+            switch horizontalStation {
+            case .left :
+                sheetX = 0
+            case .center :
+                sheetX = (self.superview!.width - self.width)/2
+            case .right:
+                sheetX = (self.superview!.width - self.width)
+            }
+            updateUI()
+        }
+    }
+    public var station : SheetStation  = .center {
         didSet{
             switch station {
             case .top:
-                self.frame.origin = CGPoint.init(x: 0, y: topY )
+                self.frame.origin = CGPoint.init(x: sheetX, y: topY )
                 
             case .center:
-                self.frame.origin = CGPoint.init(x: 0, y: centerY )
+                self.frame.origin = CGPoint.init(x: sheetX, y: centerY )
                 
             case .bottom:
-                self.frame.origin = CGPoint.init(x: 0, y: bottomY )
+                self.frame.origin = CGPoint.init(x: sheetX, y: bottomY )
                 
             case .inVisable:
-                self.frame.origin = CGPoint.init(x: 0, y: inVisableY)
+                self.frame.origin = CGPoint.init(x: sheetX, y: inVisableY)
             }
-            self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
-            if  self.childView.subviews.count > 0 {
-                self.childView.subviews[0].frame.size = self.childView.frame.size
-            }
+            setChildViewAndSubView()
+            
             switch self.barLineStation {
             case .inToolBar:
                 self.barLineStation = .inToolBar
@@ -61,48 +87,51 @@ public class BottomSheetView : UIView {
             case .inVisable:
                 break
             }
+            
         }
     }
     
-    
-    
+
     public var barLineStation : BarLineStation = .inToolBar {
         didSet{
             switch barLineStation {
             case .inToolBar:
                 barLine.removeFromSuperview()
-                barLine.center = CGPoint.init(x: self.width*0.5, y: self.toolBar.y + 15)
+                barLine.center = CGPoint.init(x: sheetX+self.width*0.5, y: self.toolBar.y + 15)
                 self.addSubview(barLine)
             case .outToolBar:
                 barLine.removeFromSuperview()
-                barLine.center = CGPoint.init(x: self.width*0.5, y: self.y - 15)
+                barLine.center = CGPoint.init(x: sheetX+self.width*0.5, y: self.y - 15)
                 self.superview?.addSubview(barLine)
             case .inVisable:
                 barLine.removeFromSuperview()
             }
         }
     }
-    
+
     public init(frame: CGRect , superview : UIView) {
-        super.init(frame: frame)
+        super.init(frame : frame)
         superview.addSubview(self)
         
         setupToolBar()
         setupChildView()
         setupBarLine()
-        self.setTopCenterBottom(topY: 50 ,
+        
+        self.setTopCenterBottom(topY: UIApplication.shared.statusBarFrame.height ,
                                 centerY:  self.frame.height/2,
-                                bottomY: superview.frame.height-70)
+                                bottomY: superview.frame.height-toolBarHeight)
         self.roundCorner(radious: topCornerRadius, rectCorners: [.topLeft,.topRight])
-        self.setTootBarHeihgt(height: 60)
-        self.inVisableY = superview.frame.height
-   
+        self.station = .bottom
+        
+        updateUI()
     }
     func setupToolBar(){
         toolBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight))
         toolBar.backgroundColor = UIColor.white
         let panGesture =  UIPanGestureRecognizer.init(target: self, action: #selector(handel(recognizer:)))
         toolBar.addGestureRecognizer(panGesture)
+        let barTapGesture =  UITapGestureRecognizer.init(target: self, action: #selector(barTapHandle))
+        toolBar.addGestureRecognizer(barTapGesture)
         self.addSubview(toolBar)
     }
     
@@ -127,7 +156,8 @@ public class BottomSheetView : UIView {
     func updateUI(){
         toolBar.frame = CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight)
         childView.frame = CGRect.init(x: 0, y: toolBar.frame.height,width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height)
-        barLine.frame = CGRect.init(x: 0, y: 0, width: 60 , height: 30)
+        barLine.frame = CGRect.init(x: 0, y: 0, width: barLineH , height: barLineH)
+        
         switch self.station {
         case .bottom:
             self.station = .bottom
@@ -143,12 +173,8 @@ public class BottomSheetView : UIView {
     public func setTootBarHeihgt(height : CGFloat){
         self.toolBarHeight  =  height
         updateUI()
-//        self.bottomY = self.superview!.frame.height - self.toolBar.frame.height
-//        self.centerY = bottomY - self.frame.height/2
-//        self.topY = bottomY - self.childView.frame.height
     }
     
-    //MARK: fix bottomY < toolBar  is error
     public func setTopCenterBottom(topY : CGFloat , centerY : CGFloat , bottomY : CGFloat){
         self.bottomY = bottomY
         self.centerY = centerY
@@ -179,6 +205,8 @@ public class BottomSheetView : UIView {
     public func setBarLineImage(color : UIColor? = nil , size : CGSize? = nil , image: UIImage? = nil ){
        
         if let size = size {
+            self.barLineH = barLine.frame.height
+            self.barLineW = barLine.frame.width
             self.barLine.frame.size =  size
             switch self.barLineStation {
             case .inToolBar:
@@ -200,24 +228,21 @@ public class BottomSheetView : UIView {
     public func setChildView(view : UIView){
         self.childView.addSubview(view)
     }
-    
-    @objc func handel(recognizer:UIPanGestureRecognizer){
-        
-        let translation = recognizer.translation(in: self)
+    public func slidAction(translation : CGPoint){
         if self.frame.origin.y + translation.y <= topY {
-            self.frame.origin = CGPoint.init(x: 0, y: topY )
+            self.frame.origin = CGPoint.init(x: sheetX, y: topY )
             
         }else if self.frame.origin.y + translation.y >= bottomY {
-            self.frame.origin = CGPoint.init(x: 0, y: bottomY)
-    
+            self.frame.origin = CGPoint.init(x: sheetX, y: bottomY)
+            
         }else{
-            self.frame.origin = CGPoint.init(x: 0, y: self.frame.origin.y + translation.y)
-     
+            self.frame.origin = CGPoint.init(x: sheetX, y: self.frame.origin.y + translation.y)
+            
             //            setChildeViewBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
             //            setToolBarBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
         }
-        self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
-        self.childView.subviews[0].frame.size = self.childView.frame.size
+        
+        setChildViewAndSubView()
         
         switch self.barLineStation {
         case .inToolBar:
@@ -228,6 +253,44 @@ public class BottomSheetView : UIView {
             break
         }
         
+    }
+    func endAction(){
+        let height =  abs(self.frame.origin.y - self.topY)
+        let bottom =  abs(self.frame.origin.y - self.bottomY)
+        let center =  abs(self.frame.origin.y - self.centerY)
+        print("\(height),\(bottom),\(center)")
+        if self.frame.origin.y < self.centerY {
+            switch height < center {
+            case true :
+                UIView.animate(withDuration: animationDuration, animations: {
+                    self.station = .top
+                } )
+            case false :
+                UIView.animate(withDuration: animationDuration, animations: {
+                    self.station = .center
+                } )
+                
+            }
+        }else{
+            switch bottom < center {
+            case true :
+                UIView.animate(withDuration:animationDuration, animations: {
+                    self.station = .bottom
+                } )
+                
+            case false :
+                UIView.animate(withDuration: animationDuration, animations: {
+                    self.station = .center
+                } )
+            }
+        }
+    }
+    @objc internal func handel(recognizer:UIPanGestureRecognizer){
+        
+        let translation = recognizer.translation(in: self)
+        
+        slidAction(translation: translation)
+        
         recognizer.setTranslation(CGPoint.zero, in: self.superview)
         
         guard isMagnetic() else{
@@ -235,41 +298,45 @@ public class BottomSheetView : UIView {
         }
         
         if recognizer.state == UIGestureRecognizer.State.ended {
-            let height =  abs(self.frame.origin.y - self.topY)
-            let bottom =  abs(self.frame.origin.y - self.bottomY)
-            let center =  abs(self.frame.origin.y - self.centerY)
-            print("\(height),\(bottom),\(center)")
-            if self.frame.origin.y < self.centerY {
-                switch height < center {
-                case true :
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.station = .top
-                    } )
-                case false :
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.station = .center
-                    } )
-                    
-                }
-            }else{
-                switch bottom < center {
-                case true :
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.station = .bottom
-                    } )
-                    
-                case false :
-                    UIView.animate(withDuration: 0.1, animations: {
-                        self.station = .center
-                    } )
-                }
-            }
+            
+            endAction()
             
         }
         
         
     }
+    @objc internal func barTapHandle(){
+        switch station {
+        case .bottom:
+            present(station: tapBarToStation ,duration: animationDuration)
+        default:
+            present(station: .bottom ,duration: animationDuration)
+        }
+    }
     func isMagnetic() -> Bool {
         return true
+    }
+    
+    // fix bottomY < toolBar.height
+    func setChildViewAndSubView(){
+        if self.y + toolBar.frame.height < self.superview!.frame.height{
+            self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
+            if  self.childView.subviews.count > 0 {
+                self.childView.subviews[0].frame.size = self.childView.frame.size
+            }
+        }
+    }
+    public func present(station : SheetStation , duration:TimeInterval){
+        UIView.animate(withDuration: duration) {
+            self.presentAction(station: station)
+        }
+    }
+    public func present(station : SheetStation ){
+        UIView.animate(withDuration: animationDuration) {
+            self.presentAction(station: station)
+        }
+    }
+    internal func presentAction(station : SheetStation){
+        self.station = station
     }
 }
