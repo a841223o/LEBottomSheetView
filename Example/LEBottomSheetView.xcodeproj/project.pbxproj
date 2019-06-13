@@ -95,9 +95,9 @@
 		607FACD21AFB9204008FA782 /* Example for LEBottomSheetView */ = {
 			isa = PBXGroup;
 			children = (
-				B38698B322B0B2D600F99CA0 /* TableViewController.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				B38698B322B0B2D600F99CA0 /* TableViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,

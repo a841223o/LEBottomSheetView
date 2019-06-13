@@ -10,7 +10,8 @@ import Foundation
 
 public class BottomSheetBackgroundView : BottomSheetView {
     var backgroundView : UIView!
-    public var backgroundViewColor: UIColor = UIColor.darkGray.withAlphaComponent(0.9)
+    var backgroundViewColor: UIColor = UIColor.darkGray.withAlphaComponent(0.9)
+    
     override public init(frame: CGRect, superview: UIView) {
         super.init(frame: frame, superview: superview)
         backgroundView = UIView(frame: self.superview!.frame)
@@ -42,5 +43,7 @@ public class BottomSheetBackgroundView : BottomSheetView {
     @objc func backgroundTapHandle(){
         present(station: .bottom , duration: animationDuration)
     }
-    
+    public func setBackgroundViewColor(color : UIColor){
+        backgroundViewColor = color
+    }
 }

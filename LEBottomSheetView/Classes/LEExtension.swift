@@ -17,7 +17,6 @@ extension UIView {
         maskLayer.path = path.cgPath
         self.layer.mask = maskLayer
     }
-    
 
     public var width: CGFloat {
         get {
@@ -45,7 +44,12 @@ extension UIView {
             frame.origin.y = newValue
         }
     }
-    
+    public func setShadow(){
+        self.layer.shadowOffset = CGSize.init(width: 5, height: 5)
+        self.layer.shadowOpacity = 0.7
+        self.layer.shadowRadius = 5
+        self.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
+    }
 }
 extension UIImage {
     

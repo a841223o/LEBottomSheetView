@@ -30,6 +30,7 @@ public class BottomSheetView : UIView {
     
     internal var toolBar : UIView!
     var toolBarHeight : CGFloat = 45
+    var shadowView : UIView!
     var childView : UIView!
     var barLine : UIImageView!
     var image : UIImage!
@@ -77,6 +78,7 @@ public class BottomSheetView : UIView {
             case .inVisable:
                 self.frame.origin = CGPoint.init(x: sheetX, y: inVisableY)
             }
+            
             setChildViewAndSubView()
             
             switch self.barLineStation {
@@ -88,6 +90,7 @@ public class BottomSheetView : UIView {
                 break
             }
             
+            shadowView.frame = CGRect.init(x: self.frame.origin.x, y: self.frame.origin.y + 2, width: self.width, height: self.frame.height)
         }
     }
     
@@ -111,8 +114,9 @@ public class BottomSheetView : UIView {
 
     public init(frame: CGRect , superview : UIView) {
         super.init(frame : frame)
-        superview.addSubview(self)
         
+        setupShadowView(superview: superview)
+        superview.addSubview(self)
         setupToolBar()
         setupChildView()
         setupBarLine()
@@ -120,10 +124,16 @@ public class BottomSheetView : UIView {
         self.setTopCenterBottom(topY: UIApplication.shared.statusBarFrame.height ,
                                 centerY:  self.frame.height/2,
                                 bottomY: superview.frame.height-toolBarHeight)
-        self.roundCorner(radious: topCornerRadius, rectCorners: [.topLeft,.topRight])
         self.station = .bottom
-        
+        self.roundCorner(radious: topCornerRadius, rectCorners: [.topLeft,.topRight])
         updateUI()
+    }
+    func setupShadowView(superview : UIView){
+        shadowView  = UIView(frame : frame)
+        shadowView.layer.cornerRadius = CGFloat(topCornerRadius)
+        shadowView.backgroundColor = UIColor.red
+        shadowView.setShadow()
+        superview.addSubview(shadowView)
     }
     func setupToolBar(){
         toolBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight))
@@ -242,6 +252,8 @@ public class BottomSheetView : UIView {
             //            setToolBarBackgroundColor(color: UIColor.themeColor.lighten().withAlphaComponent(0.7+0.4*((self.frame.height-self.frame.origin.y)/self.frame.height)))
         }
         
+        shadowView.frame = CGRect.init(x: self.frame.origin.x, y: self.frame.origin.y + 2, width: self.width, height: self.frame.height)
+       
         setChildViewAndSubView()
         
         switch self.barLineStation {
@@ -264,10 +276,12 @@ public class BottomSheetView : UIView {
             case true :
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.station = .top
+                   
                 } )
             case false :
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.station = .center
+                   
                 } )
                 
             }
@@ -276,11 +290,13 @@ public class BottomSheetView : UIView {
             case true :
                 UIView.animate(withDuration:animationDuration, animations: {
                     self.station = .bottom
+                    
                 } )
                 
             case false :
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.station = .center
+                    
                 } )
             }
         }
@@ -300,7 +316,7 @@ public class BottomSheetView : UIView {
         if recognizer.state == UIGestureRecognizer.State.ended {
             
             endAction()
-            
+    
         }
         
         
@@ -319,11 +335,11 @@ public class BottomSheetView : UIView {
     
     // fix bottomY < toolBar.height
     func setChildViewAndSubView(){
-        if self.y + toolBar.frame.height < self.superview!.frame.height{
-            self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
-            if  self.childView.subviews.count > 0 {
-                self.childView.subviews[0].frame.size = self.childView.frame.size
-            }
+            if self.y + self.toolBar.frame.height < self.superview!.frame.height{
+                self.childView.frame.size = CGSize.init(width: self.frame.width, height: self.frame.height - self.frame.origin.y - self.toolBar.frame.height )
+                if  self.childView.subviews.count > 0 {
+                    self.childView.subviews[0].frame.size = self.childView.frame.size
+                }
         }
     }
     public func present(station : SheetStation , duration:TimeInterval){
