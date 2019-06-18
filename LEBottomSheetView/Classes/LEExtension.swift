@@ -44,11 +44,11 @@ extension UIView {
             frame.origin.y = newValue
         }
     }
-    public func setShadow(){
-        self.layer.shadowOffset = CGSize.init(width: 5, height: 5)
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 5
-        self.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
+    public func setShadow(size:CGSize , opacity : Float ,radius: CGFloat , cgColor : CGColor){
+        self.layer.shadowOffset = size
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowRadius = radius
+        self.layer.shadowColor = cgColor
     }
 }
 extension UIImage {
@@ -73,4 +73,9 @@ extension UIImage {
         return image
     }
     
+    
+}
+
+extension UIColor {
+    public static let shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
 }

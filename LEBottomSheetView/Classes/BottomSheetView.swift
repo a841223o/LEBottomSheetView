@@ -132,7 +132,7 @@ public class BottomSheetView : UIView {
         shadowView  = UIView(frame : frame)
         shadowView.layer.cornerRadius = CGFloat(topCornerRadius)
         shadowView.backgroundColor = UIColor.red
-        shadowView.setShadow()
+        shadowView.setShadow(size: CGSize.init(width: 0, height: 0),opacity: 0.8 , radius: CGFloat(self.topCornerRadius), cgColor: UIColor.shadowColor)
         superview.addSubview(shadowView)
     }
     func setupToolBar(){
