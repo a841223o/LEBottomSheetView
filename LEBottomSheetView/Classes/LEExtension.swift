@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     
-    public func roundCorner(radious : Double,rectCorners : UIRectCorner){
+    public func roundCorner(radious : CGFloat,rectCorners : UIRectCorner){
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: rectCorners, cornerRadii: CGSize(width: radious, height: radious))
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds

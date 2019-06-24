@@ -43,7 +43,12 @@ public class BottomSheetView : UIView {
            return  self.superview!.frame.height
         }
     }
-    var topCornerRadius : Double = 20
+    public var topCornerRadius : CGFloat = 5 {
+        didSet{
+            self.roundCorner(radious: topCornerRadius, rectCorners: [.topLeft,.topRight])
+            self.shadowView.layer.cornerRadius = topCornerRadius
+        }
+    }
     var sheetX : CGFloat = 0
     var barLineW : CGFloat = 60
     var barLineH : CGFloat = 60
@@ -132,8 +137,16 @@ public class BottomSheetView : UIView {
         shadowView  = UIView(frame : frame)
         shadowView.layer.cornerRadius = CGFloat(topCornerRadius)
         shadowView.backgroundColor = UIColor.red
-        shadowView.setShadow(size: CGSize.init(width: 0, height: 0),opacity: 0.8 , radius: CGFloat(self.topCornerRadius), cgColor: UIColor.shadowColor)
+        shadowView.setShadow(size: CGSize.init(width: 0, height: 0),opacity: 1 , radius: CGFloat(self.topCornerRadius), cgColor: UIColor.shadowColor)
         superview.addSubview(shadowView)
+    }
+    public func setShadowView(offset:CGSize = CGSize(width: 0, height: 0) , opacity: Float, cgColor: CGColor) {
+        if topCornerRadius != 0{
+            shadowView.setShadow(size: offset ,opacity: opacity , radius: CGFloat(self.topCornerRadius), cgColor: cgColor)
+        }else{
+            shadowView.setShadow(size: offset ,opacity: opacity , radius: CGFloat(5), cgColor: cgColor)
+        }
+        
     }
     func setupToolBar(){
         toolBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: toolBarHeight))

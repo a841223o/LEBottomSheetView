@@ -11,6 +11,42 @@ import LEBottomSheetView
 class ViewController: UIViewController {
     var bottomView : BottomSheetView!
     var tableViewController : TableViewController?
+    @IBAction func ToolBarState(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            bottomView.barLineStation = .inToolBar
+        case 1:
+            bottomView.barLineStation = .outToolBar
+        case 2:
+            bottomView.barLineStation = .inVisable
+        default:
+            break
+        }
+    }
+    
+    
+    @IBAction func ToolBarImage(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            bottomView.setBarLineImage(color: UIColor.gray.withAlphaComponent(0.8), size:CGSize.init(width: 60, height: 60) , image:UIImage.bundledImage(named: "barLine") )
+        case 1:
+            bottomView.setBarLineImage(image:UIImage.init(imageLiteralResourceName: "line") )
+        case 2:
+            bottomView.setBarLineImage(color: UIColor.red.withAlphaComponent(0.8))
+        case 3:
+            bottomView.setBarLineImage(size:CGSize.init(width: 30, height: 30) )
+        default:
+            break
+        }
+    }
+    
+    @IBAction func radiusSlide(_ sender: UISlider) {
+        bottomView.topCornerRadius = CGFloat(sender.value)
+    }
+    @IBAction func shadowSlide(_ sender: UISlider) {
+        bottomView.setShadowView(opacity: sender.value, cgColor: UIColor.shadowColor)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
