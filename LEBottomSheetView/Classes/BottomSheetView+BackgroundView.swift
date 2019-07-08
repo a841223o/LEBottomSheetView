@@ -35,6 +35,7 @@ public class BottomSheetBackgroundView : BottomSheetView {
         case .center:
         backgroundView.isHidden = false
         backgroundView.backgroundColor = backgroundViewColor
+        present(station: .bottom , duration: animationDuration)
         self.superview?.bringSubviewToFront(self)
         default:
         backgroundView.isHidden = true

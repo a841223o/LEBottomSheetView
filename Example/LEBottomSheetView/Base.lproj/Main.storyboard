@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Z2c-mP-dh4">
-                                <rect key="frame" x="16" y="42.5" width="239" height="29"/>
+                                <rect key="frame" x="16" y="42.5" width="279" height="29"/>
                                 <segments>
                                     <segment title="inBar"/>
                                     <segment title="outBar"/>
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q0A-Ut-XZB">
-                                <rect key="frame" x="16" y="78.5" width="239" height="29"/>
+                                <rect key="frame" x="16" y="78.5" width="279" height="29"/>
                                 <segments>
                                     <segment title="default"/>
                                     <segment title="custom"/>
@@ -66,17 +66,39 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="Idh-Dp-J5b">
-                                <rect key="frame" x="76" y="129.5" width="181" height="31"/>
+                                <rect key="frame" x="76" y="129.5" width="221" height="31"/>
                                 <connections>
                                     <action selector="radiusSlide:" destination="vXZ-lx-hvc" eventType="valueChanged" id="FDu-MA-xTI"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-pe-SDl">
-                                <rect key="frame" x="76" y="160.5" width="181" height="31"/>
+                                <rect key="frame" x="76" y="160.5" width="221" height="31"/>
                                 <connections>
                                     <action selector="shadowSlide:" destination="vXZ-lx-hvc" eventType="valueChanged" id="bPG-d9-6iQ"/>
                                 </connections>
                             </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0DW-4m-LXq">
+                                <rect key="frame" x="16" y="204" width="279" height="29"/>
+                                <segments>
+                                    <segment title="Top"/>
+                                    <segment title="center"/>
+                                    <segment title="bottom"/>
+                                    <segment title="inVisable"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sheetViewState:" destination="vXZ-lx-hvc" eventType="valueChanged" id="hIM-EF-3xG"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iEk-zz-M3E">
+                                <rect key="frame" x="16" y="240" width="279" height="29"/>
+                                <segments>
+                                    <segment title="no background"/>
+                                    <segment title="have background"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeBackgroundMode:" destination="vXZ-lx-hvc" eventType="valueChanged" id="IkU-Vq-aUc"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -85,20 +107,26 @@
                             <constraint firstItem="d1P-56-4Ut" firstAttribute="top" secondItem="yGi-fF-gIM" secondAttribute="bottom" constant="8" id="AI9-VY-pMN"/>
                             <constraint firstItem="Z2c-mP-dh4" firstAttribute="top" secondItem="rBs-F6-NpL" secondAttribute="bottom" constant="8" id="AOb-1h-YWJ"/>
                             <constraint firstItem="Idh-Dp-J5b" firstAttribute="trailing" secondItem="q0A-Ut-XZB" secondAttribute="trailing" id="FEb-6C-8aL"/>
+                            <constraint firstItem="0DW-4m-LXq" firstAttribute="top" secondItem="2PI-vf-yFx" secondAttribute="bottom" constant="21" id="G9Q-Ir-LGK"/>
                             <constraint firstItem="2PI-vf-yFx" firstAttribute="leading" secondItem="Ufn-O7-SEb" secondAttribute="leading" constant="16" id="GvS-Bx-if7"/>
                             <constraint firstItem="q0A-Ut-XZB" firstAttribute="leading" secondItem="Z2c-mP-dh4" secondAttribute="leading" id="IhZ-YE-3tU"/>
                             <constraint firstItem="Idh-Dp-J5b" firstAttribute="centerY" secondItem="d1P-56-4Ut" secondAttribute="centerY" id="LXn-IE-6CD"/>
                             <constraint firstItem="yGi-fF-gIM" firstAttribute="leading" secondItem="Ufn-O7-SEb" secondAttribute="leading" constant="16" id="LgU-Gi-d9V"/>
                             <constraint firstItem="Idh-Dp-J5b" firstAttribute="leading" secondItem="d1P-56-4Ut" secondAttribute="trailing" constant="27" id="LnU-yd-3KX"/>
                             <constraint firstItem="DVS-pe-SDl" firstAttribute="centerY" secondItem="2PI-vf-yFx" secondAttribute="centerY" id="M7q-VY-5Qs"/>
+                            <constraint firstItem="iEk-zz-M3E" firstAttribute="trailing" secondItem="0DW-4m-LXq" secondAttribute="trailing" id="SBn-RM-m6r"/>
                             <constraint firstItem="DVS-pe-SDl" firstAttribute="leading" secondItem="Idh-Dp-J5b" secondAttribute="leading" id="WQ2-zV-uxt"/>
+                            <constraint firstItem="iEk-zz-M3E" firstAttribute="top" secondItem="0DW-4m-LXq" secondAttribute="bottom" constant="8" id="azd-Dj-gCW"/>
                             <constraint firstItem="Z2c-mP-dh4" firstAttribute="leading" secondItem="rBs-F6-NpL" secondAttribute="leading" id="dU8-us-gQg"/>
                             <constraint firstItem="2PI-vf-yFx" firstAttribute="top" secondItem="d1P-56-4Ut" secondAttribute="bottom" constant="16" id="eYr-IJ-URM"/>
+                            <constraint firstItem="0DW-4m-LXq" firstAttribute="trailing" secondItem="DVS-pe-SDl" secondAttribute="trailing" id="esF-c4-J0z"/>
                             <constraint firstItem="rBs-F6-NpL" firstAttribute="leading" secondItem="Ufn-O7-SEb" secondAttribute="leading" constant="16" id="fiE-GX-RHN"/>
                             <constraint firstItem="q0A-Ut-XZB" firstAttribute="top" secondItem="Z2c-mP-dh4" secondAttribute="bottom" constant="8" id="hnV-eW-5or"/>
+                            <constraint firstItem="0DW-4m-LXq" firstAttribute="leading" secondItem="2PI-vf-yFx" secondAttribute="leading" id="kei-yc-VoG"/>
                             <constraint firstItem="q0A-Ut-XZB" firstAttribute="width" secondItem="Z2c-mP-dh4" secondAttribute="width" id="mf9-Yk-efb"/>
                             <constraint firstItem="yGi-fF-gIM" firstAttribute="top" secondItem="q0A-Ut-XZB" secondAttribute="bottom" constant="7.5" id="rcx-oS-RGd"/>
                             <constraint firstItem="d1P-56-4Ut" firstAttribute="leading" secondItem="Ufn-O7-SEb" secondAttribute="leading" constant="16" id="t5d-gA-2LY"/>
+                            <constraint firstItem="iEk-zz-M3E" firstAttribute="leading" secondItem="0DW-4m-LXq" secondAttribute="leading" id="uST-6z-VJF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ufn-O7-SEb"/>
                     </view>

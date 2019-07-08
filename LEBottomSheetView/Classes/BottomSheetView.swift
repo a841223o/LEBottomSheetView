@@ -70,6 +70,7 @@ public class BottomSheetView : UIView {
     }
     public var station : SheetStation  = .center {
         didSet{
+            
             switch station {
             case .top:
                 self.frame.origin = CGPoint.init(x: sheetX, y: topY )
@@ -367,5 +368,10 @@ public class BottomSheetView : UIView {
     }
     internal func presentAction(station : SheetStation){
         self.station = station
+    }
+    
+    public func dismiss(){
+        self.removeFromSuperview()
+        self.shadowView.removeFromSuperview()
     }
 }

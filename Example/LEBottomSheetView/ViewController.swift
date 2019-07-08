@@ -24,7 +24,37 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func sheetViewState(_ sender: UISegmentedControl) {
+        UIView.animate(withDuration: 0.5, animations: {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            self.bottomView.station = .top
+        case 1:
+            self.bottomView.station = .center
+        case 2:
+            self.bottomView.station = .bottom
+        case 3:
+            self.bottomView.station = .inVisable
+        default:
+            break
+        }
+        } )
+
+    }
     
+    @IBAction func changeBackgroundMode(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            bottomView.dismiss()
+            bottomView = BottomSheetView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
+            bottomView.setBottomSheetViewBackgroundColor(color: UIColor.white)
+
+        default:
+            bottomView.dismiss()
+            bottomView = BottomSheetBackgroundView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
+            bottomView.setBottomSheetViewBackgroundColor(color: UIColor.white)
+        }
+    }
     @IBAction func ToolBarImage(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
