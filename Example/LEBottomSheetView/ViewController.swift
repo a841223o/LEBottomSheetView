@@ -10,6 +10,7 @@ import UIKit
 import LEBottomSheetView
 class ViewController: UIViewController {
     var bottomView : BottomSheetView!
+    var bottomBackgrondView : BottomSheetBackgroundView!
     var tableViewController : TableViewController?
     @IBAction func ToolBarState(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -45,14 +46,12 @@ class ViewController: UIViewController {
     @IBAction func changeBackgroundMode(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            bottomView.dismiss()
-            bottomView = BottomSheetView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
-            bottomView.setBottomSheetViewBackgroundColor(color: UIColor.white)
-
+            
+            bottomView.present(station: .center)
+            bottomBackgrondView.present(station: .inVisable)
         default:
-            bottomView.dismiss()
-            bottomView = BottomSheetBackgroundView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
-            bottomView.setBottomSheetViewBackgroundColor(color: UIColor.white)
+            bottomView.present(station: .inVisable)
+            bottomBackgrondView.present(station: .center)
         }
     }
     @IBAction func ToolBarImage(_ sender: UISegmentedControl) {
@@ -80,8 +79,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bottomBackgrondView = BottomSheetBackgroundView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
+        bottomBackgrondView.setBottomSheetViewBackgroundColor(color: UIColor.white)
+        bottomBackgrondView.present(station: .inVisable)
+        
+        
         bottomView = BottomSheetView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
         bottomView.setBottomSheetViewBackgroundColor(color: UIColor.white)
+        
         
         
     }

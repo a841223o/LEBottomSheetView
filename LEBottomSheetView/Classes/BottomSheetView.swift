@@ -55,6 +55,9 @@ public class BottomSheetView : UIView {
     var animationDuration : TimeInterval = 0.3
     var tapBarToStation : SheetStation = .center
     
+    
+    var bottomSheetViewDelegate : LEBottomSheetViewDelegate?
+    
     public var horizontalStation : HorizontalStation = .left {
         didSet{
             switch horizontalStation {
@@ -74,13 +77,10 @@ public class BottomSheetView : UIView {
             switch station {
             case .top:
                 self.frame.origin = CGPoint.init(x: sheetX, y: topY )
-                
             case .center:
                 self.frame.origin = CGPoint.init(x: sheetX, y: centerY )
-                
             case .bottom:
                 self.frame.origin = CGPoint.init(x: sheetX, y: bottomY )
-                
             case .inVisable:
                 self.frame.origin = CGPoint.init(x: sheetX, y: inVisableY)
             }
@@ -97,6 +97,8 @@ public class BottomSheetView : UIView {
             }
             
             shadowView.frame = CGRect.init(x: self.frame.origin.x, y: self.frame.origin.y + 2, width: self.width, height: self.frame.height)
+            
+            bottomSheetViewDelegate?.LEBottomSheetView(bottomSheetView: self, stationAt: station)
         }
     }
     
@@ -284,15 +286,21 @@ public class BottomSheetView : UIView {
         let height =  abs(self.frame.origin.y - self.topY)
         let bottom =  abs(self.frame.origin.y - self.bottomY)
         let center =  abs(self.frame.origin.y - self.centerY)
-        print("\(height),\(bottom),\(center)")
+        
         if self.frame.origin.y < self.centerY {
             switch height < center {
             case true :
+                guard bottomSheetViewDelegate?.LEBottomSheetView(bottomSheetView: self, stationAtIsMagnetic: .top) ?? true else {
+                    return
+                }
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.station = .top
                    
                 } )
             case false :
+                guard bottomSheetViewDelegate?.LEBottomSheetView(bottomSheetView: self, stationAtIsMagnetic: .center) ?? true else {
+                    return
+                }
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.station = .center
                    
@@ -302,12 +310,18 @@ public class BottomSheetView : UIView {
         }else{
             switch bottom < center {
             case true :
+                guard bottomSheetViewDelegate?.LEBottomSheetView(bottomSheetView: self, stationAtIsMagnetic: .bottom) ?? true else {
+                    return
+                }
                 UIView.animate(withDuration:animationDuration, animations: {
                     self.station = .bottom
                     
                 } )
                 
             case false :
+                guard bottomSheetViewDelegate?.LEBottomSheetView(bottomSheetView: self, stationAtIsMagnetic: .center) ?? true else {
+                    return
+                }
                 UIView.animate(withDuration: animationDuration, animations: {
                     self.station = .center
                     
@@ -322,10 +336,6 @@ public class BottomSheetView : UIView {
         slidAction(translation: translation)
         
         recognizer.setTranslation(CGPoint.zero, in: self.superview)
-        
-        guard isMagnetic() else{
-            return
-        }
         
         if recognizer.state == UIGestureRecognizer.State.ended {
             

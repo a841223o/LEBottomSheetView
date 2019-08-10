@@ -21,6 +21,10 @@ class TableViewController :UIViewController , UITableViewDelegate , UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
