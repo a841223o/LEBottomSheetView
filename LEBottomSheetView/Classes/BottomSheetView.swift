@@ -346,17 +346,15 @@ public class BottomSheetView : UIView {
         
     }
     @objc internal func barTapHandle(){
-        switch station {
-        case .bottom:
-            present(station: tapBarToStation ,duration: animationDuration)
-        default:
-            present(station: .bottom ,duration: animationDuration)
-        }
+        
+//        switch station {
+//        case .bottom:
+//            present(station: tapBarToStation ,duration: animationDuration)
+//        default:
+//            present(station: .bottom ,duration: animationDuration)
+//        }
+        bottomSheetViewDelegate?.LEBottomSheetView(bottomSheetView: self, stationAtBarTapAction: station)
     }
-    func isMagnetic() -> Bool {
-        return true
-    }
-    
     // fix bottomY < toolBar.height
     func setChildViewAndSubView(){
             if self.y + self.toolBar.frame.height < self.superview!.frame.height{

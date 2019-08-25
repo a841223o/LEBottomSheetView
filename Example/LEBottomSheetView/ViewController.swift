@@ -103,3 +103,18 @@ class ViewController: UIViewController {
 
 }
 
+
+extension ViewController : LEBottomSheetViewDelegate {
+    func LEBottomSheetView(bottomSheetView: BottomSheetView, stationAt : SheetStation) {
+        print(stationAt)
+    }
+    
+    func LEBottomSheetView(bottomSheetView: BottomSheetView, stationAtIsMagnetic: SheetStation) -> Bool {
+        return false
+    }
+    
+    func LEBottomSheetView(bottomSheetView: BottomSheetView, stationAtBarTapAction: SheetStation) {
+    }
+
+    
+}
