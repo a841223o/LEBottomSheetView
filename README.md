@@ -1,20 +1,31 @@
 # LEBottomSheetView
 
-[![CI Status](https://img.shields.io/travis/a841223o/LEBottomSheetView.svg?style=flat)](https://travis-ci.org/a841223o/LEBottomSheetView)
+[![CIStatus](https://img.shields.io/travis/a841223o/LEBottomSheetView.svg?style=flat)](https://travis-ci.org/a841223o/LEBottomSheetView)
 [![Version](https://img.shields.io/cocoapods/v/LEBottomSheetView.svg?style=flat)](https://cocoapods.org/pods/LEBottomSheetView)
 [![License](https://img.shields.io/cocoapods/l/LEBottomSheetView.svg?style=flat)](https://cocoapods.org/pods/LEBottomSheetView)
 [![Platform](https://img.shields.io/cocoapods/p/LEBottomSheetView.svg?style=flat)](https://cocoapods.org/pods/LEBottomSheetView)
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Fast to show a sheetView
+```
+let bottomView = BottomSheetView.init(frame: self.view.frame, superview: self.view)
+```
+Set SheetView childView
+```
+//prepare a view controller
+tableViewController = self.storyboard?.instantiateViewController(withIdentifier: "TableViewController") as? TableViewController
+//can set any view into sheetView
+bottomView.setChildView(view: tableViewController?.view ?? UIView())
+```
 
 ## Requirements
-
+swift 4.2
+Xcode 10.0
 ## Installation
 
-LEBottomSheetView is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Using [CocoaPods](https://cocoapods.org).
+Add the following line to your Podfile:
 
 ```ruby
 pod 'LEBottomSheetView'

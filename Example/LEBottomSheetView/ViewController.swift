@@ -84,7 +84,7 @@ class ViewController: UIViewController {
         bottomBackgrondView.present(station: .inVisable)
         
         
-        bottomView = BottomSheetView.init(frame: CGRect.init(x:0, y:0 , width: self.view.frame.width, height: self.view.frame.height), superview: self.view)
+        bottomView = BottomSheetView.init(frame: self.view.frame, superview: self.view)
         bottomView.setBottomSheetViewBackgroundColor(color: UIColor.white)
         
         
