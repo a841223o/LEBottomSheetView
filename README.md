@@ -18,6 +18,7 @@ Set SheetView childView
 tableViewController = self.storyboard?.instantiateViewController(withIdentifier: "TableViewController") as? TableViewController
 bottomView.setChildView(view: tableViewController?.view ?? UIView())
 ```
+![init](https://github.com/a841223o/LEBottomSheetView/blob/master/Example/LEBottomSheetView/gif/init.gif?raw=true)
 
 ## Requirements
 swift 4.2
