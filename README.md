@@ -8,14 +8,14 @@
 ## Example
 
 Fast to show a sheetView
-```
+```swift
 let bottomView = BottomSheetView.init(frame: self.view.frame, superview: self.view)
 ```
 Set SheetView childView
-```
-//prepare a view controller
+  * prepare a view controller
+  * use the setChildView func 
+```swift
 tableViewController = self.storyboard?.instantiateViewController(withIdentifier: "TableViewController") as? TableViewController
-//can set any view into sheetView
 bottomView.setChildView(view: tableViewController?.view ?? UIView())
 ```
 
